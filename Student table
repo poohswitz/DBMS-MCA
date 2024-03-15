@@ -1,0 +1,49 @@
+//DBMS Exercise 1
+
+CREATE DATABASE POORNA;
+USE POORNA;
+show tables;
+desc student;
+SELECT * FROM Student;
+
+CREATE TABLE Student
+(
+USN varchar(15) PRIMARY KEY,
+name varchar(20),
+date_of_birth Date,
+branch varchar(5),
+mark1 int,
+mark2 int,
+mark3 int,
+total float,
+GPA float
+);
+
+INSERT INTO Student (USN,name,date_of_birth,branch,mark1,mark2,mark3) VALUES
+('1001','Arun', '1998-05-12', 'EEE',  80,90,95),
+('1002','Santhosh', '1999-11-10', 'MCA',  78,94,89),
+('1003','Rahul', '1999-09-10', 'MCA',  77,94,90),
+('1004','Roshan', '1998-11-10', 'ECE',  78,94,89),
+('1005','Ashwin', '1999-07-10', 'ECE',  90,94,89);
+
+UPDATE Student 
+SET total=mark1+mark2+mark3;
+
+UPDATE Student 
+SET GPA= total/300*100;
+
+SELECT USN,Name, Date_of_birth FROM student WHERE date_of_birth like "1998%";
+
+SELECT * FROM Student
+WHERE branch='MCA';
+
+SELECT USN,branch, max(GPA) FROM Student 
+GROUP BY branch ORDER BY max(GPA) DESC;
+
+SELECT * FROM Student WHERE name LIKE 'S%' ;
+
+SELECT * FROM Student WHERE name LIKE '%ar';
+
+DELETE FROM Student WHERE USN = '1001';
+
+SELECT  * FROM Student;
